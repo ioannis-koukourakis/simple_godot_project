@@ -1,0 +1,85 @@
+[gd_scene format=4 uid="uid://da6ht8rafjaoh"]
+
+[ext_resource type="Script" uid="uid://c5j6lpk68rfor" path="res://scripts/props/pickup.gd" id="1_nuyg2"]
+[ext_resource type="PackedScene" uid="uid://nkhebkefde83" path="res://assets/models/cube.tscn" id="1_wjg2a"]
+[ext_resource type="Material" uid="uid://3s5dj2iyvnt6" path="res://assets/materials/key.tres" id="2_nuyg2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s2tbi"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_n2km6"]
+_surfaces = [{
+"aabb": AABB(-0.5, -0.5, -0.5, 1, 1, 1),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAD/////AAAAAP//AAD//wAA////////AAD//wAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_aveb6"]
+resource_name = "cube_Cube"
+_surfaces = [{
+"aabb": AABB(-0.5, -0.5, -0.5, 1, 1, 1),
+"attribute_data": PackedByteArray("////v1TV/3////9/VNX/v1TV/7+qqv9/VNX/f6qq/7+qqv+//3//f6qq/3//f/+//3//v1RV/3//f/9/VFX/v6qq////f/+/qqr/v/9///+qqv9//3//P6qq/z//f/9/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_s2tbi"),
+"primitive": 3,
+"uv_scale": Vector4(6, 4, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP///78AAP//AAD/vwAA//////+/AAAAAAAA/78AAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAP+//////////7//////AAD/v///AAD///+///8AAP//AIAAAP////8AgP///////wCAAAAAAP//AIAAAAAAAABU1f//AAD//1TV//8AAAAAVNUAAAAA//9U1f////8AAFTVAAD/////VNUAAP//AABU1f///////1TV/3////9/////f////3////9/////f////3////9/////fwAA/38AAP9/AAD/fwAA/3////9/////f////3///1RVVFVUVVRVVFVUVVRVVFVU1aoqVNWqKlTVqipU1aoq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_n2km6")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d5x7l"]
+
+[node name="key" type="Node3D" unique_id=669497115 node_paths=PackedStringArray("trigger")]
+script = ExtResource("1_nuyg2")
+item_type = "key"
+trigger = NodePath("trigger")
+
+[node name="model" type="Node3D" parent="." unique_id=801466495]
+
+[node name="cube1" parent="model" unique_id=2003001611 instance=ExtResource("1_wjg2a")]
+transform = Transform3D(0.1, 0, 0, 0, -2.1855695e-09, -0.1, 0, 0.05, -4.371139e-09, 0.1716254, 0, 0)
+
+[node name="Cube" parent="model/cube1" index="0" unique_id=1719960329]
+surface_material_override/0 = ExtResource("2_nuyg2")
+
+[node name="cube3" parent="model" unique_id=1404825890 instance=ExtResource("1_wjg2a")]
+transform = Transform3D(0.044680122, 0, 0, 0, -2.1855695e-09, -0.13817257, 0, 0.05000001, -6.0397154e-09, -0.13380286, 0, 0)
+
+[node name="Cube" parent="model/cube3" index="0" unique_id=1719960329]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 0.6852573, -0.9032254, 0, 0.1582222)
+surface_material_override/0 = ExtResource("2_nuyg2")
+
+[node name="Cube2" type="MeshInstance3D" parent="model/cube3" unique_id=934270105]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 0.6852573, 0.9258423, 0, 0.1582241)
+mesh = SubResource("ArrayMesh_aveb6")
+surface_material_override/0 = ExtResource("2_nuyg2")
+
+[node name="cube2" parent="model" unique_id=2025098568 instance=ExtResource("1_wjg2a")]
+transform = Transform3D(0.4, 0, 0, 0, -1.7484555e-09, -0.05, 0, 0.04, -2.1855695e-09, 0.014094025, 0, 0)
+
+[node name="Cube" parent="model/cube2" index="0" unique_id=1719960329]
+surface_material_override/0 = ExtResource("2_nuyg2")
+
+[node name="trigger" type="Area3D" parent="." unique_id=1683188180]
+
+[node name="collision_shape" type="CollisionShape3D" parent="trigger" unique_id=857247875]
+shape = SubResource("BoxShape3D_d5x7l")
+
+[node name="light" type="OmniLight3D" parent="." unique_id=1814792800]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19999999, 0)
+light_color = Color(0.26, 0.71633327, 1, 1)
+light_energy = 0.5
+omni_range = 1.28
+
+[editable path="model/cube1"]
+[editable path="model/cube3"]
+[editable path="model/cube2"]

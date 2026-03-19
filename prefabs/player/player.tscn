@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bw8bvbt7kpfra"]
+
+[ext_resource type="Script" uid="uid://xogwgeiyrph" path="res://scripts/player/player_controller.gd" id="1_sxsrd"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tvfjm"]
+radius = 0.35
+height = 1.75
+
+[node name="player" type="CharacterBody3D" unique_id=1176110465]
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+script = ExtResource("1_sxsrd")
+
+[node name="collision_shape" type="CollisionShape3D" parent="." unique_id=34305021]
+shape = SubResource("CapsuleShape3D_tvfjm")
+
+[node name="head" type="Node3D" parent="." unique_id=1720749598]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+
+[node name="camera" type="Camera3D" parent="head" unique_id=1072243729]
+current = true

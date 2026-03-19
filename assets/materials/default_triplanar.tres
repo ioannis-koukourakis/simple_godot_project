@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bvc16pi22hitn"]
+
+[ext_resource type="Texture2D" uid="uid://ddroqrvuu8sy6" path="res://assets/textures/primitive_diffuse.dds" id="1_unlkl"]
+[ext_resource type="Texture2D" uid="uid://dtfhadxc5tdjy" path="res://assets/textures/primitive_normal.dds" id="2_vqu3h"]
+
+[resource]
+albedo_texture = ExtResource("1_unlkl")
+normal_enabled = true
+normal_texture = ExtResource("2_vqu3h")
+uv1_triplanar = true
+uv1_world_triplanar = true

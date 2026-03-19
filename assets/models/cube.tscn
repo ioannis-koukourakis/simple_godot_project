@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://nkhebkefde83"]
+
+[ext_resource type="PackedScene" uid="uid://iusbun6wlru6" path="res://assets/meshes/primitive/cube.glb" id="1_at8sk"]
+[ext_resource type="Material" uid="uid://bvc16pi22hitn" path="res://assets/materials/default_triplanar.tres" id="2_hm6tn"]
+
+[node name="cube" unique_id=2003001611 instance=ExtResource("1_at8sk")]
+
+[node name="Cube" parent="." index="0" unique_id=1719960329]
+surface_material_override/0 = ExtResource("2_hm6tn")

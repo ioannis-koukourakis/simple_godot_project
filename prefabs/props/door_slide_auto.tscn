@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://5op4j1et7xcs"]
+
+[ext_resource type="PackedScene" uid="uid://nkhebkefde83" path="res://assets/models/cube.tscn" id="1_g6rgv"]
+[ext_resource type="Script" uid="uid://b5ja1yb0bg2na" path="res://scripts/props/door_slide_auto.gd" id="1_locwm"]
+[ext_resource type="Material" uid="uid://cs2l8rglgtvvk" path="res://assets/materials/door_slide.tres" id="2_bq0pf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g6rgv"]
+size = Vector3(0.2, 2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bq0pf"]
+size = Vector3(4, 2, 2)
+
+[sub_resource type="Animation" id="Animation_locwm"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("door:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("door:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("door:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_bpyml"]
+resource_name = "door_open"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("door:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("door:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1.9, -0.16666667, -0.31666666, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("door:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jk5u4"]
+_data = {
+&"RESET": SubResource("Animation_locwm"),
+&"door_open": SubResource("Animation_bpyml")
+}
+
+[node name="door_slide_auto" type="Node3D" unique_id=1238628209]
+script = ExtResource("1_locwm")
+
+[node name="door" type="AnimatableBody3D" parent="." unique_id=569537940]
+sync_to_physics = false
+
+[node name="cube" parent="door" unique_id=2003001611 instance=ExtResource("1_g6rgv")]
+transform = Transform3D(0.2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="Cube" parent="door/cube" index="0" unique_id=1719960329]
+surface_material_override/0 = ExtResource("2_bq0pf")
+
+[node name="collision_shape" type="CollisionShape3D" parent="door" unique_id=632954930]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9802322e-08, 2.9802322e-08, 0)
+shape = SubResource("BoxShape3D_g6rgv")
+
+[node name="trigger" type="Area3D" parent="." unique_id=280004490]
+
+[node name="collision_shape" type="CollisionShape3D" parent="trigger" unique_id=1156406414]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0861626e-07, 0, 0)
+shape = SubResource("BoxShape3D_bq0pf")
+
+[node name="animation_player" type="AnimationPlayer" parent="." unique_id=564862239]
+libraries/ = SubResource("AnimationLibrary_jk5u4")
+
+[connection signal="body_entered" from="trigger" to="." method="_on_trigger_body_entered"]
+[connection signal="body_exited" from="trigger" to="." method="_on_trigger_body_exited"]
+
+[editable path="door/cube"]

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://d3ysqrbm7k55"]
+
+[ext_resource type="PackedScene" uid="uid://nkhebkefde83" path="res://assets/models/cube.tscn" id="1_kqe4l"]
+[ext_resource type="Material" uid="uid://5is6jlsx7roo" path="res://assets/materials/door_crate.tres" id="2_nkwbw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nkwbw"]
+
+[node name="crate" type="RigidBody3D" unique_id=1276131872]
+
+[node name="cube" parent="." unique_id=2003001611 instance=ExtResource("1_kqe4l")]
+
+[node name="Cube" parent="cube" index="0" unique_id=1719960329]
+surface_material_override/0 = ExtResource("2_nkwbw")
+
+[node name="collision_shape" type="CollisionShape3D" parent="." unique_id=1480399268]
+shape = SubResource("BoxShape3D_nkwbw")
+
+[editable path="cube"]

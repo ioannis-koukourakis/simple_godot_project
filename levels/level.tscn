@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://c2ll3ryy1f0ne"]
+
+[ext_resource type="PackedScene" uid="uid://kp7wp6gihcng" path="res://prefabs/statics/cube_static.tscn" id="1_80vhd"]
+[ext_resource type="PackedScene" uid="uid://ox2ra7gvmh3d" path="res://prefabs/props/lamp.tscn" id="2_5mrsh"]
+[ext_resource type="Environment" uid="uid://dqo1v5ea38kor" path="res://default_environment.tres" id="2_cwqvt"]
+[ext_resource type="PackedScene" uid="uid://bw8bvbt7kpfra" path="res://prefabs/player/player.tscn" id="3_5mrsh"]
+[ext_resource type="PackedScene" uid="uid://5op4j1et7xcs" path="res://prefabs/props/door_slide_auto.tscn" id="3_safpt"]
+[ext_resource type="PackedScene" uid="uid://d3ysqrbm7k55" path="res://prefabs/props/crate.tscn" id="6_gjl0y"]
+[ext_resource type="PackedScene" uid="uid://da6ht8rafjaoh" path="res://prefabs/props/key.tscn" id="6_vnv7o"]
+
+[node name="level" type="Node3D" unique_id=596087436]
+
+[node name="global" type="Node3D" parent="." unique_id=1633480701]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="global" unique_id=515967702]
+environment = ExtResource("2_cwqvt")
+
+[node name="player" parent="global" unique_id=1176110465 instance=ExtResource("3_5mrsh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, -1.8)
+
+[node name="room_a" type="Node3D" parent="." unique_id=123923004]
+
+[node name="architecture" type="Node3D" parent="room_a" unique_id=1073389072]
+
+[node name="ceilings" type="Node3D" parent="room_a/architecture" unique_id=802780581]
+
+[node name="ceiling1" parent="room_a/architecture/ceilings" unique_id=850644806 instance=ExtResource("1_80vhd")]
+transform = Transform3D(8, 0, 0, 0, 0.2, 0, 0, 0, 8, 0, 2.7000003, 0)
+
+[node name="walls" type="Node3D" parent="room_a/architecture" unique_id=1316623140]
+
+[node name="wall1" parent="room_a/architecture/walls" unique_id=411761988 instance=ExtResource("1_80vhd")]
+transform = Transform3D(0.4, 0, 0, 0, 2.6, 0, 0, 0, 8, 3.8000002, 1.3, 0)
+
+[node name="wall2" parent="room_a/architecture/walls" unique_id=612394385 instance=ExtResource("1_80vhd")]
+transform = Transform3D(0.4, 0, 0, 0, 2.6, 0, 0, 0, 8, -3.8, 1.3, 0)
+
+[node name="wall3" parent="room_a/architecture/walls" unique_id=604316255 instance=ExtResource("1_80vhd")]
+transform = Transform3D(-1.7484556e-08, 0, 3, 0, 2.6, 0, -0.4, 0, -1.3113416e-07, -2.4999998, 1.3, -3.8)
+
+[node name="wall4" parent="room_a/architecture/walls" unique_id=495595174 instance=ExtResource("1_80vhd")]
+transform = Transform3D(-1.7484556e-08, 0, 8, 0, 2.6, 0, -0.4, 0, -3.496911e-07, 2.3841858e-07, 1.3, 3.8)
+
+[node name="wall5" parent="room_a/architecture/walls" unique_id=155017722 instance=ExtResource("1_80vhd")]
+transform = Transform3D(-1.7484556e-08, 0, 3, 0, 2.6, 0, -0.4, 0, -1.3113416e-07, 2.5000002, 1.3, -3.8)
+
+[node name="wall6" parent="room_a/architecture/walls" unique_id=1257404825 instance=ExtResource("1_80vhd")]
+transform = Transform3D(-1.7484556e-08, 0, 2, 0, 0.6, 0, -0.4, 0, -8.742278e-08, 2.3841858e-07, 2.3, -3.8)
+
+[node name="floors" type="Node3D" parent="room_a/architecture" unique_id=181836283]
+
+[node name="floor1" parent="room_a/architecture/floors" unique_id=969468184 instance=ExtResource("1_80vhd")]
+transform = Transform3D(8, 0, 0, 0, 0.2, 0, 0, 0, 8, 0, -0.1, 0)
+
+[node name="props" type="Node3D" parent="room_a" unique_id=24549231]
+
+[node name="lamp1" parent="room_a/props" unique_id=1141653594 instance=ExtResource("2_5mrsh")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.6, 1.5, -0.4000001)
+
+[node name="lamp4" parent="room_a/props" unique_id=178988183 instance=ExtResource("2_5mrsh")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 9.685755e-08, 2.3, -3.6000001)
+
+[node name="lamp3" parent="room_a/props" unique_id=914013065 instance=ExtResource("2_5mrsh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4156103e-07, 1.5, 3.6)
+
+[node name="lamp2" parent="room_a/props" unique_id=545427982 instance=ExtResource("2_5mrsh")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 3.6000001, 1.5, -0.4000001)
+
+[node name="door_slide_auto" parent="room_a/props" unique_id=1238628209 instance=ExtResource("3_safpt")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 1, -3.8000002)
+
+[node name="key" parent="room_a/props" unique_id=669497115 instance=ExtResource("6_vnv7o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2.3)
+
+[node name="crate1" parent="room_a/props" unique_id=1276131872 instance=ExtResource("6_gjl0y")]
+transform = Transform3D(0.9961947, 0, 0.087155774, 0, 1, 0, -0.087155774, 0, 0.9961947, 0, 0.5, 0.70000017)
+
+[node name="room_b" type="Node3D" parent="." unique_id=517264238]
+
+[node name="architecture" type="Node3D" parent="room_b" unique_id=1666712814]
+
+[node name="floors" type="Node3D" parent="room_b/architecture" unique_id=1346265940]
+
+[node name="floor1" parent="room_b/architecture/floors" unique_id=15940485 instance=ExtResource("1_80vhd")]
+transform = Transform3D(8, 0, 0, 0, 0.2, 0, 0, 0, 8, 0, -0.1, -8)
+
+[node name="walls" type="Node3D" parent="room_b/architecture" unique_id=1763867720]
+
+[node name="wall1" parent="room_b/architecture/walls" unique_id=1359822047 instance=ExtResource("1_80vhd")]
+transform = Transform3D(0.4, 0, 0, 0, 2.6, 0, 0, 0, 8, 3.8000002, 1.3, -8)
+
+[node name="wall2" parent="room_b/architecture/walls" unique_id=1968888925 instance=ExtResource("1_80vhd")]
+transform = Transform3D(0.4, 0, 0, 0, 2.6, 0, 0, 0, 8, -3.7999997, 1.3, -8)
+
+[node name="wall3" parent="room_b/architecture/walls" unique_id=1658728542 instance=ExtResource("1_80vhd")]
+transform = Transform3D(-1.7484556e-08, 0, -8, 0, 2.6, 0, 0.4, 0, -3.496911e-07, 2.3841858e-07, 1.3, -11.8)
+
+[node name="ceilings" type="Node3D" parent="room_b/architecture" unique_id=1458296624]
+
+[node name="ceiling1" parent="room_b/architecture/ceilings" unique_id=75298810 instance=ExtResource("1_80vhd")]
+transform = Transform3D(8, 0, 0, 0, 0.2, 0, 0, 0, 8, 0, 2.7000003, -8)
+
+[node name="props" type="Node3D" parent="room_b" unique_id=480784489]
+
+[node name="lamp1" parent="room_b/props" unique_id=893649394 instance=ExtResource("2_5mrsh")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.6, 1.5, -8)
+
+[node name="lamp2" parent="room_b/props" unique_id=1749890684 instance=ExtResource("2_5mrsh")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.6000001, 1.5, -8)
+
+[node name="lamp3" parent="room_b/props" unique_id=2047574313 instance=ExtResource("2_5mrsh")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.7881393e-07, 1.5, -11.6)
+
+[node name="lamp4" parent="room_b/props" unique_id=852719487 instance=ExtResource("2_5mrsh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.685755e-08, 2.3, -4.0000005)
+
+[node name="crate1" parent="room_b/props" unique_id=324250582 instance=ExtResource("6_gjl0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0.5, -7.8)
+
+[node name="crate2" parent="room_b/props" unique_id=667747528 instance=ExtResource("6_gjl0y")]
+transform = Transform3D(0.9848077, 0, 0.17364818, 0, 1, 0, -0.17364818, 0, 0.9848077, 0, 0.5, -7.9)
+
+[node name="crate3" parent="room_b/props" unique_id=629942822 instance=ExtResource("6_gjl0y")]
+transform = Transform3D(0.76604444, 0, -0.6427876, 0, 1, 0, 0.6427876, 0, 0.76604444, -0.6, 1.5, -7.9)
